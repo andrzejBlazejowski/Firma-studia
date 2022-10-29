@@ -12,6 +12,7 @@ namespace Firma.ViewModels.Abstract
 {
     public abstract class WszystkieViewModel<T> :WorkspaceViewModel //bo wszystkie zakl....
     {
+        //just test commit
         #region Fields
         //to jest obiekt, ktory...
         private readonly FakturyEntities fakturyEntities;
