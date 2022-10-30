@@ -1,4 +1,5 @@
 ﻿using Firma.Helpers;
+using Firma.Models;
 using Firma.Models.Entities;
 using Firma.ViewModels.Abstract;
 using System;
@@ -12,24 +13,24 @@ using System.Windows.Input;
 
 namespace Firma.ViewModels
 {
-    public class WszystkieTowaryViewModel: WszystkieViewModel<Towar>
+    public class WszystkieTowaryViewModel: WszystkieViewModel<comodity>
     {
         
         #region Konstruktor
         public WszystkieTowaryViewModel()
-            :base("Towary")
+            :base("comodities")
         {
         }
         #endregion
         #region Helpers
         public override void Load()
         {
-            List = new ObservableCollection<Towar>
+            List = new ObservableCollection<comodity>
                 (
                 //to jest zapytanie linq (obiektowa wersja SQL)
-                  from towar in FakturyEntities.Towar //dla kazdego...
-                  where towar.CzyAktywny==true
-                  select towar //wy...
+                  from comodity in ZaliczenieEntities.comodities //dla kazdego...
+                  where comodity.is_active==true
+                  select comodity //wy...
                 );
         }
         #endregion

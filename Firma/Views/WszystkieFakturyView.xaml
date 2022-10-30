@@ -1,4 +1,4 @@
-﻿<local:WszystkieViewBase x:Class="Firma.Views.WszystkieFakturyView"
+﻿<local:AllViewBase x:Class="Firma.Views.WszystkieFakturyView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,4 +9,4 @@
     <Grid Background="White">
         <Label Content="Tu będą wszystkie faktury"/>
     </Grid>
-</local:WszystkieViewBase>
+</local:AllViewBase>

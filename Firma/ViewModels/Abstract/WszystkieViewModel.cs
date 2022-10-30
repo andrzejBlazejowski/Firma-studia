@@ -1,4 +1,5 @@
 ﻿using Firma.Helpers;
+using Firma.Models;
 using Firma.Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,12 @@ namespace Firma.ViewModels.Abstract
         //just test commit
         #region Fields
         //to jest obiekt, ktory...
-        private readonly FakturyEntities fakturyEntities;
-        public FakturyEntities FakturyEntities 
+        private readonly ZaliczenieEntities zaliczenieEntities;
+        public ZaliczenieEntities ZaliczenieEntities
         { 
             get
             {
-                return fakturyEntities;
+                return zaliczenieEntities;
             }
         }
         //to jest komenda do za ladowania towarow
@@ -57,7 +58,7 @@ namespace Firma.ViewModels.Abstract
         public WszystkieViewModel(string displayName)
         {
             base.DisplayName = displayName;
-            this.fakturyEntities = new FakturyEntities();
+            this.zaliczenieEntities = new ZaliczenieEntities();
         }
         #endregion
         #region Helpers
