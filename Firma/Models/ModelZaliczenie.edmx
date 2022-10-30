@@ -1,0 +1,1542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ZaliczenieModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="brand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="50" />
+          <Property Name="country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="state" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="building_number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="flat_number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="comodity">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ordinal_number" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="net_unit_price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="vat_rate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="gross_unit_price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="size_type_id" Type="int" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="brand_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="comodity_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="150" />
+          <Property Name="vat_rate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contractor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tax_number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tax_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="state" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="building_number" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="flat_number" Type="nchar" MaxLength="10" />
+          <Property Name="zip_code" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="post_office_city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="additional_info" Type="varchar" MaxLength="50" />
+          <Property Name="is_vat_taxpayer" Type="bit" Nullable="false" />
+          <Property Name="should_include_vat_27" Type="bit" Nullable="false" />
+          <Property Name="currency_id" Type="int" Nullable="false" />
+          <Property Name="contractor_type_id" Type="int" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contractor_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="150" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="curency">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="convert_rate" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="is_default" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="sign" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="delivery">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="destination_warehouse_id" Type="int" Nullable="false" />
+          <Property Name="source_contractor_id" Type="int" Nullable="false" />
+          <Property Name="source_warehouse_id" Type="int" Nullable="false" />
+          <Property Name="delivery_status_id" Type="int" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="due_date" Type="datetime" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="payment_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="delivery_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comodity_id" Type="int" Nullable="false" />
+          <Property Name="count" Type="int" Nullable="false" />
+          <Property Name="delivery_id" Type="int" Nullable="false" />
+          <Property Name="unit_cost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="curency_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="delivery_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="150" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employ">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="middle_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="psel_number" Type="varbinary" MaxLength="50" Nullable="false" />
+          <Property Name="employ_type_id" Type="int" Nullable="false" />
+          <Property Name="country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="building_number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="flat_number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="warehouse_id" Type="int" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employ_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="is_active" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="invoice">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="invoice_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="contractor_id" Type="int" Nullable="false" />
+          <Property Name="sale_date" Type="datetime" Nullable="false" />
+          <Property Name="discount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="payment_method_id" Type="int" Nullable="false" />
+          <Property Name="payment_date" Type="datetime" Nullable="false" />
+          <Property Name="net_value" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="gross_value" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="paid_value" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="pending_payment_value" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="invoice_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comodity_id" Type="int" Nullable="false" />
+          <Property Name="count" Type="int" Nullable="false" />
+          <Property Name="discount" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="invoice_id" Type="int" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="payment_method">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="250" />
+          <Property Name="is_available_externally" Type="bit" Nullable="false" />
+          <Property Name="is_available_internally" Type="bit" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="size_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varbinary" MaxLength="50" Nullable="false" />
+          <Property Name="max_height" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="max_width" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="storage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="warehouse_id" Type="int" Nullable="false" />
+          <Property Name="size_type_id" Type="int" Nullable="false" />
+          <Property Name="total_count" Type="int" Nullable="false" />
+          <Property Name="free_count" Type="int" Nullable="false" />
+          <Property Name="taken_count" Type="int" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="warehouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="150" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_comodity_brand">
+          <End Role="brand" Type="Self.brand" Multiplicity="1" />
+          <End Role="comodity" Type="Self.comodity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brand">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comodity">
+              <PropertyRef Name="brand_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comodity_comodity_category">
+          <End Role="comodity_category" Type="Self.comodity_category" Multiplicity="1" />
+          <End Role="comodity" Type="Self.comodity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comodity_category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comodity">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comodity_size_type">
+          <End Role="size_type" Type="Self.size_type" Multiplicity="1" />
+          <End Role="comodity" Type="Self.comodity" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="size_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comodity">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contractor_contractor_type">
+          <End Role="contractor_type" Type="Self.contractor_type" Multiplicity="1" />
+          <End Role="contractor" Type="Self.contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contractor_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contractor">
+              <PropertyRef Name="contractor_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contractor_curency">
+          <End Role="curency" Type="Self.curency" Multiplicity="1" />
+          <End Role="contractor" Type="Self.contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="curency">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contractor">
+              <PropertyRef Name="currency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_contractor">
+          <End Role="contractor" Type="Self.contractor" Multiplicity="1" />
+          <End Role="delivery" Type="Self.delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contractor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery">
+              <PropertyRef Name="source_contractor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_delivery_status">
+          <End Role="delivery_status" Type="Self.delivery_status" Multiplicity="1" />
+          <End Role="delivery" Type="Self.delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="delivery_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery">
+              <PropertyRef Name="delivery_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_item_comodity">
+          <End Role="comodity" Type="Self.comodity" Multiplicity="1" />
+          <End Role="delivery_item" Type="Self.delivery_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comodity">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery_item">
+              <PropertyRef Name="comodity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_item_curency">
+          <End Role="curency" Type="Self.curency" Multiplicity="1" />
+          <End Role="delivery_item" Type="Self.delivery_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="curency">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery_item">
+              <PropertyRef Name="curency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_item_delivery">
+          <End Role="delivery" Type="Self.delivery" Multiplicity="1" />
+          <End Role="delivery_item" Type="Self.delivery_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="delivery">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery_item">
+              <PropertyRef Name="delivery_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_payment_method">
+          <End Role="payment_method" Type="Self.payment_method" Multiplicity="1" />
+          <End Role="delivery" Type="Self.delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment_method">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_warehouse">
+          <End Role="warehouse" Type="Self.warehouse" Multiplicity="1" />
+          <End Role="delivery" Type="Self.delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="warehouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery">
+              <PropertyRef Name="source_warehouse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_warehouse1">
+          <End Role="warehouse" Type="Self.warehouse" Multiplicity="1" />
+          <End Role="delivery" Type="Self.delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="warehouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery">
+              <PropertyRef Name="destination_warehouse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_employ_employ_type">
+          <End Role="employ_type" Type="Self.employ_type" Multiplicity="1" />
+          <End Role="employ" Type="Self.employ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employ_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employ">
+              <PropertyRef Name="employ_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_employ_warehouse">
+          <End Role="warehouse" Type="Self.warehouse" Multiplicity="1" />
+          <End Role="employ" Type="Self.employ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="warehouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employ">
+              <PropertyRef Name="warehouse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoice_contractor">
+          <End Role="contractor" Type="Self.contractor" Multiplicity="1" />
+          <End Role="invoice" Type="Self.invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contractor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="invoice">
+              <PropertyRef Name="contractor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoice_item_comodity">
+          <End Role="comodity" Type="Self.comodity" Multiplicity="1" />
+          <End Role="invoice_item" Type="Self.invoice_item" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="comodity">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="invoice_item">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoice_item_invoice">
+          <End Role="invoice" Type="Self.invoice" Multiplicity="1" />
+          <End Role="invoice_item" Type="Self.invoice_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="invoice">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="invoice_item">
+              <PropertyRef Name="invoice_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoice_payment_method">
+          <End Role="payment_method" Type="Self.payment_method" Multiplicity="1" />
+          <End Role="invoice" Type="Self.invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment_method">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="invoice">
+              <PropertyRef Name="payment_method_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_storage_size_type">
+          <End Role="size_type" Type="Self.size_type" Multiplicity="1" />
+          <End Role="storage" Type="Self.storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="size_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="storage">
+              <PropertyRef Name="size_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_storage_warehouse">
+          <End Role="warehouse" Type="Self.warehouse" Multiplicity="1" />
+          <End Role="storage" Type="Self.storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="warehouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="storage">
+              <PropertyRef Name="warehouse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ZaliczenieModelStoreContainer">
+          <EntitySet Name="brand" EntityType="Self.brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comodity" EntityType="Self.comodity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comodity_category" EntityType="Self.comodity_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contractor" EntityType="Self.contractor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contractor_type" EntityType="Self.contractor_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="curency" EntityType="Self.curency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="delivery" EntityType="Self.delivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="delivery_item" EntityType="Self.delivery_item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="delivery_status" EntityType="Self.delivery_status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employ" EntityType="Self.employ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employ_type" EntityType="Self.employ_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="invoice" EntityType="Self.invoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="invoice_item" EntityType="Self.invoice_item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="payment_method" EntityType="Self.payment_method" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="size_type" EntityType="Self.size_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="storage" EntityType="Self.storage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="warehouse" EntityType="Self.warehouse" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_comodity_brand" Association="Self.FK_comodity_brand">
+            <End Role="brand" EntitySet="brand" />
+            <End Role="comodity" EntitySet="comodity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comodity_comodity_category" Association="Self.FK_comodity_comodity_category">
+            <End Role="comodity_category" EntitySet="comodity_category" />
+            <End Role="comodity" EntitySet="comodity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comodity_size_type" Association="Self.FK_comodity_size_type">
+            <End Role="size_type" EntitySet="size_type" />
+            <End Role="comodity" EntitySet="comodity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contractor_contractor_type" Association="Self.FK_contractor_contractor_type">
+            <End Role="contractor_type" EntitySet="contractor_type" />
+            <End Role="contractor" EntitySet="contractor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contractor_curency" Association="Self.FK_contractor_curency">
+            <End Role="curency" EntitySet="curency" />
+            <End Role="contractor" EntitySet="contractor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_contractor" Association="Self.FK_delivery_contractor">
+            <End Role="contractor" EntitySet="contractor" />
+            <End Role="delivery" EntitySet="delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_delivery_status" Association="Self.FK_delivery_delivery_status">
+            <End Role="delivery_status" EntitySet="delivery_status" />
+            <End Role="delivery" EntitySet="delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_item_comodity" Association="Self.FK_delivery_item_comodity">
+            <End Role="comodity" EntitySet="comodity" />
+            <End Role="delivery_item" EntitySet="delivery_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_item_curency" Association="Self.FK_delivery_item_curency">
+            <End Role="curency" EntitySet="curency" />
+            <End Role="delivery_item" EntitySet="delivery_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_item_delivery" Association="Self.FK_delivery_item_delivery">
+            <End Role="delivery" EntitySet="delivery" />
+            <End Role="delivery_item" EntitySet="delivery_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_payment_method" Association="Self.FK_delivery_payment_method">
+            <End Role="payment_method" EntitySet="payment_method" />
+            <End Role="delivery" EntitySet="delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_warehouse" Association="Self.FK_delivery_warehouse">
+            <End Role="warehouse" EntitySet="warehouse" />
+            <End Role="delivery" EntitySet="delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_warehouse1" Association="Self.FK_delivery_warehouse1">
+            <End Role="warehouse" EntitySet="warehouse" />
+            <End Role="delivery" EntitySet="delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_employ_employ_type" Association="Self.FK_employ_employ_type">
+            <End Role="employ_type" EntitySet="employ_type" />
+            <End Role="employ" EntitySet="employ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_employ_warehouse" Association="Self.FK_employ_warehouse">
+            <End Role="warehouse" EntitySet="warehouse" />
+            <End Role="employ" EntitySet="employ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoice_contractor" Association="Self.FK_invoice_contractor">
+            <End Role="contractor" EntitySet="contractor" />
+            <End Role="invoice" EntitySet="invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoice_item_comodity" Association="Self.FK_invoice_item_comodity">
+            <End Role="comodity" EntitySet="comodity" />
+            <End Role="invoice_item" EntitySet="invoice_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoice_item_invoice" Association="Self.FK_invoice_item_invoice">
+            <End Role="invoice" EntitySet="invoice" />
+            <End Role="invoice_item" EntitySet="invoice_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoice_payment_method" Association="Self.FK_invoice_payment_method">
+            <End Role="payment_method" EntitySet="payment_method" />
+            <End Role="invoice" EntitySet="invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_storage_size_type" Association="Self.FK_storage_size_type">
+            <End Role="size_type" EntitySet="size_type" />
+            <End Role="storage" EntitySet="storage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_storage_warehouse" Association="Self.FK_storage_warehouse">
+            <End Role="warehouse" EntitySet="warehouse" />
+            <End Role="storage" EntitySet="storage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ZaliczenieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="brand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="building_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="flat_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="comodities" Relationship="Self.FK_comodity_brand" FromRole="brand" ToRole="comodity" />
+        </EntityType>
+        <EntityType Name="comodity">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ordinal_number" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="net_unit_price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="vat_rate" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="gross_unit_price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="size_type_id" Type="Int32" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <Property Name="brand_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="brand" Relationship="Self.FK_comodity_brand" FromRole="comodity" ToRole="brand" />
+          <NavigationProperty Name="comodity_category" Relationship="Self.FK_comodity_comodity_category" FromRole="comodity" ToRole="comodity_category" />
+          <NavigationProperty Name="size_type" Relationship="Self.FK_comodity_size_type" FromRole="comodity" ToRole="size_type" />
+          <NavigationProperty Name="delivery_item" Relationship="Self.FK_delivery_item_comodity" FromRole="comodity" ToRole="delivery_item" />
+          <NavigationProperty Name="invoice_item" Relationship="Self.FK_invoice_item_comodity" FromRole="comodity" ToRole="invoice_item" />
+        </EntityType>
+        <EntityType Name="comodity_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="vat_rate" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="comodities" Relationship="Self.FK_comodity_comodity_category" FromRole="comodity_category" ToRole="comodity" />
+        </EntityType>
+        <EntityType Name="contractor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tax_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tax_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="building_number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="flat_number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="zip_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="post_office_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="additional_info" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="is_vat_taxpayer" Type="Boolean" Nullable="false" />
+          <Property Name="should_include_vat_27" Type="Boolean" Nullable="false" />
+          <Property Name="currency_id" Type="Int32" Nullable="false" />
+          <Property Name="contractor_type_id" Type="Int32" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="contractor_type" Relationship="Self.FK_contractor_contractor_type" FromRole="contractor" ToRole="contractor_type" />
+          <NavigationProperty Name="curency" Relationship="Self.FK_contractor_curency" FromRole="contractor" ToRole="curency" />
+          <NavigationProperty Name="deliveries" Relationship="Self.FK_delivery_contractor" FromRole="contractor" ToRole="delivery" />
+          <NavigationProperty Name="invoices" Relationship="Self.FK_invoice_contractor" FromRole="contractor" ToRole="invoice" />
+        </EntityType>
+        <EntityType Name="contractor_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="contractors" Relationship="Self.FK_contractor_contractor_type" FromRole="contractor_type" ToRole="contractor" />
+        </EntityType>
+        <EntityType Name="curency">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="convert_rate" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="is_default" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="sign" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="contractors" Relationship="Self.FK_contractor_curency" FromRole="curency" ToRole="contractor" />
+          <NavigationProperty Name="delivery_item" Relationship="Self.FK_delivery_item_curency" FromRole="curency" ToRole="delivery_item" />
+        </EntityType>
+        <EntityType Name="delivery">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="destination_warehouse_id" Type="Int32" Nullable="false" />
+          <Property Name="source_contractor_id" Type="Int32" Nullable="false" />
+          <Property Name="source_warehouse_id" Type="Int32" Nullable="false" />
+          <Property Name="delivery_status_id" Type="Int32" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <Property Name="due_date" Type="DateTime" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="payment_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="contractor" Relationship="Self.FK_delivery_contractor" FromRole="delivery" ToRole="contractor" />
+          <NavigationProperty Name="delivery_status" Relationship="Self.FK_delivery_delivery_status" FromRole="delivery" ToRole="delivery_status" />
+          <NavigationProperty Name="delivery_item" Relationship="Self.FK_delivery_item_delivery" FromRole="delivery" ToRole="delivery_item" />
+          <NavigationProperty Name="payment_method" Relationship="Self.FK_delivery_payment_method" FromRole="delivery" ToRole="payment_method" />
+          <NavigationProperty Name="warehouse" Relationship="Self.FK_delivery_warehouse" FromRole="delivery" ToRole="warehouse" />
+          <NavigationProperty Name="warehouse1" Relationship="Self.FK_delivery_warehouse1" FromRole="delivery" ToRole="warehouse" />
+        </EntityType>
+        <EntityType Name="delivery_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comodity_id" Type="Int32" Nullable="false" />
+          <Property Name="count" Type="Int32" Nullable="false" />
+          <Property Name="delivery_id" Type="Int32" Nullable="false" />
+          <Property Name="unit_cost" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <Property Name="curency_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="comodity" Relationship="Self.FK_delivery_item_comodity" FromRole="delivery_item" ToRole="comodity" />
+          <NavigationProperty Name="curency" Relationship="Self.FK_delivery_item_curency" FromRole="delivery_item" ToRole="curency" />
+          <NavigationProperty Name="delivery" Relationship="Self.FK_delivery_item_delivery" FromRole="delivery_item" ToRole="delivery" />
+        </EntityType>
+        <EntityType Name="delivery_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="deliveries" Relationship="Self.FK_delivery_delivery_status" FromRole="delivery_status" ToRole="delivery" />
+        </EntityType>
+        <EntityType Name="employ">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="middle_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="psel_number" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+          <Property Name="employ_type_id" Type="Int32" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="building_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="flat_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="warehouse_id" Type="Int32" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="employ_type" Relationship="Self.FK_employ_employ_type" FromRole="employ" ToRole="employ_type" />
+          <NavigationProperty Name="warehouse" Relationship="Self.FK_employ_warehouse" FromRole="employ" ToRole="warehouse" />
+        </EntityType>
+        <EntityType Name="employ_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="is_active" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="employs" Relationship="Self.FK_employ_employ_type" FromRole="employ_type" ToRole="employ" />
+        </EntityType>
+        <EntityType Name="invoice">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="invoice_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contractor_id" Type="Int32" Nullable="false" />
+          <Property Name="sale_date" Type="DateTime" Nullable="false" />
+          <Property Name="discount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="payment_method_id" Type="Int32" Nullable="false" />
+          <Property Name="payment_date" Type="DateTime" Nullable="false" />
+          <Property Name="net_value" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="gross_value" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="paid_value" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="pending_payment_value" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="contractor" Relationship="Self.FK_invoice_contractor" FromRole="invoice" ToRole="contractor" />
+          <NavigationProperty Name="invoice_item" Relationship="Self.FK_invoice_item_invoice" FromRole="invoice" ToRole="invoice_item" />
+          <NavigationProperty Name="payment_method" Relationship="Self.FK_invoice_payment_method" FromRole="invoice" ToRole="payment_method" />
+        </EntityType>
+        <EntityType Name="invoice_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comodity_id" Type="Int32" Nullable="false" />
+          <Property Name="count" Type="Int32" Nullable="false" />
+          <Property Name="discount" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="invoice_id" Type="Int32" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="comodity" Relationship="Self.FK_invoice_item_comodity" FromRole="invoice_item" ToRole="comodity" />
+          <NavigationProperty Name="invoice" Relationship="Self.FK_invoice_item_invoice" FromRole="invoice_item" ToRole="invoice" />
+        </EntityType>
+        <EntityType Name="payment_method">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="is_available_externally" Type="Boolean" Nullable="false" />
+          <Property Name="is_available_internally" Type="Boolean" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="deliveries" Relationship="Self.FK_delivery_payment_method" FromRole="payment_method" ToRole="delivery" />
+          <NavigationProperty Name="invoices" Relationship="Self.FK_invoice_payment_method" FromRole="payment_method" ToRole="invoice" />
+        </EntityType>
+        <EntityType Name="size_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+          <Property Name="max_height" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="max_width" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="comodity" Relationship="Self.FK_comodity_size_type" FromRole="size_type" ToRole="comodity" />
+          <NavigationProperty Name="storages" Relationship="Self.FK_storage_size_type" FromRole="size_type" ToRole="storage" />
+        </EntityType>
+        <EntityType Name="storage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="warehouse_id" Type="Int32" Nullable="false" />
+          <Property Name="size_type_id" Type="Int32" Nullable="false" />
+          <Property Name="total_count" Type="Int32" Nullable="false" />
+          <Property Name="free_count" Type="Int32" Nullable="false" />
+          <Property Name="taken_count" Type="Int32" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="size_type" Relationship="Self.FK_storage_size_type" FromRole="storage" ToRole="size_type" />
+          <NavigationProperty Name="warehouse" Relationship="Self.FK_storage_warehouse" FromRole="storage" ToRole="warehouse" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="warehouse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="deliveries" Relationship="Self.FK_delivery_warehouse" FromRole="warehouse" ToRole="delivery" />
+          <NavigationProperty Name="deliveries1" Relationship="Self.FK_delivery_warehouse1" FromRole="warehouse" ToRole="delivery" />
+          <NavigationProperty Name="employs" Relationship="Self.FK_employ_warehouse" FromRole="warehouse" ToRole="employ" />
+          <NavigationProperty Name="storages" Relationship="Self.FK_storage_warehouse" FromRole="warehouse" ToRole="storage" />
+        </EntityType>
+        <Association Name="FK_comodity_brand">
+          <End Role="brand" Type="Self.brand" Multiplicity="1" />
+          <End Role="comodity" Type="Self.comodity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="brand">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comodity">
+              <PropertyRef Name="brand_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comodity_comodity_category">
+          <End Role="comodity_category" Type="Self.comodity_category" Multiplicity="1" />
+          <End Role="comodity" Type="Self.comodity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comodity_category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comodity">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_comodity_size_type">
+          <End Role="size_type" Type="Self.size_type" Multiplicity="1" />
+          <End Role="comodity" Type="Self.comodity" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="size_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comodity">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_item_comodity">
+          <End Role="comodity" Type="Self.comodity" Multiplicity="1" />
+          <End Role="delivery_item" Type="Self.delivery_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comodity">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery_item">
+              <PropertyRef Name="comodity_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoice_item_comodity">
+          <End Role="comodity" Type="Self.comodity" Multiplicity="1" />
+          <End Role="invoice_item" Type="Self.invoice_item" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="comodity">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="invoice_item">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contractor_contractor_type">
+          <End Role="contractor_type" Type="Self.contractor_type" Multiplicity="1" />
+          <End Role="contractor" Type="Self.contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contractor_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contractor">
+              <PropertyRef Name="contractor_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contractor_curency">
+          <End Role="curency" Type="Self.curency" Multiplicity="1" />
+          <End Role="contractor" Type="Self.contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="curency">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="contractor">
+              <PropertyRef Name="currency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_contractor">
+          <End Role="contractor" Type="Self.contractor" Multiplicity="1" />
+          <End Role="delivery" Type="Self.delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contractor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery">
+              <PropertyRef Name="source_contractor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoice_contractor">
+          <End Role="contractor" Type="Self.contractor" Multiplicity="1" />
+          <End Role="invoice" Type="Self.invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contractor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="invoice">
+              <PropertyRef Name="contractor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_item_curency">
+          <End Role="curency" Type="Self.curency" Multiplicity="1" />
+          <End Role="delivery_item" Type="Self.delivery_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="curency">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery_item">
+              <PropertyRef Name="curency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_delivery_status">
+          <End Role="delivery_status" Type="Self.delivery_status" Multiplicity="1" />
+          <End Role="delivery" Type="Self.delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="delivery_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery">
+              <PropertyRef Name="delivery_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_item_delivery">
+          <End Role="delivery" Type="Self.delivery" Multiplicity="1" />
+          <End Role="delivery_item" Type="Self.delivery_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="delivery">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery_item">
+              <PropertyRef Name="delivery_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_payment_method">
+          <End Role="payment_method" Type="Self.payment_method" Multiplicity="1" />
+          <End Role="delivery" Type="Self.delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment_method">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_warehouse">
+          <End Role="warehouse" Type="Self.warehouse" Multiplicity="1" />
+          <End Role="delivery" Type="Self.delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="warehouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery">
+              <PropertyRef Name="source_warehouse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_delivery_warehouse1">
+          <End Role="warehouse" Type="Self.warehouse" Multiplicity="1" />
+          <End Role="delivery" Type="Self.delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="warehouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="delivery">
+              <PropertyRef Name="destination_warehouse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_employ_employ_type">
+          <End Role="employ_type" Type="Self.employ_type" Multiplicity="1" />
+          <End Role="employ" Type="Self.employ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employ_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employ">
+              <PropertyRef Name="employ_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_employ_warehouse">
+          <End Role="warehouse" Type="Self.warehouse" Multiplicity="1" />
+          <End Role="employ" Type="Self.employ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="warehouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employ">
+              <PropertyRef Name="warehouse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoice_item_invoice">
+          <End Role="invoice" Type="Self.invoice" Multiplicity="1" />
+          <End Role="invoice_item" Type="Self.invoice_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="invoice">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="invoice_item">
+              <PropertyRef Name="invoice_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoice_payment_method">
+          <End Role="payment_method" Type="Self.payment_method" Multiplicity="1" />
+          <End Role="invoice" Type="Self.invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment_method">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="invoice">
+              <PropertyRef Name="payment_method_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_storage_size_type">
+          <End Role="size_type" Type="Self.size_type" Multiplicity="1" />
+          <End Role="storage" Type="Self.storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="size_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="storage">
+              <PropertyRef Name="size_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_storage_warehouse">
+          <End Role="warehouse" Type="Self.warehouse" Multiplicity="1" />
+          <End Role="storage" Type="Self.storage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="warehouse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="storage">
+              <PropertyRef Name="warehouse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ZaliczenieEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="brands" EntityType="Self.brand" />
+          <EntitySet Name="comodities" EntityType="Self.comodity" />
+          <EntitySet Name="comodity_category" EntityType="Self.comodity_category" />
+          <EntitySet Name="contractors" EntityType="Self.contractor" />
+          <EntitySet Name="contractor_type" EntityType="Self.contractor_type" />
+          <EntitySet Name="curencies" EntityType="Self.curency" />
+          <EntitySet Name="deliveries" EntityType="Self.delivery" />
+          <EntitySet Name="delivery_item" EntityType="Self.delivery_item" />
+          <EntitySet Name="delivery_status" EntityType="Self.delivery_status" />
+          <EntitySet Name="employs" EntityType="Self.employ" />
+          <EntitySet Name="employ_type" EntityType="Self.employ_type" />
+          <EntitySet Name="invoices" EntityType="Self.invoice" />
+          <EntitySet Name="invoice_item" EntityType="Self.invoice_item" />
+          <EntitySet Name="payment_method" EntityType="Self.payment_method" />
+          <EntitySet Name="size_type" EntityType="Self.size_type" />
+          <EntitySet Name="storages" EntityType="Self.storage" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="warehouses" EntityType="Self.warehouse" />
+          <AssociationSet Name="FK_comodity_brand" Association="Self.FK_comodity_brand">
+            <End Role="brand" EntitySet="brands" />
+            <End Role="comodity" EntitySet="comodities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comodity_comodity_category" Association="Self.FK_comodity_comodity_category">
+            <End Role="comodity_category" EntitySet="comodity_category" />
+            <End Role="comodity" EntitySet="comodities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_comodity_size_type" Association="Self.FK_comodity_size_type">
+            <End Role="size_type" EntitySet="size_type" />
+            <End Role="comodity" EntitySet="comodities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_item_comodity" Association="Self.FK_delivery_item_comodity">
+            <End Role="comodity" EntitySet="comodities" />
+            <End Role="delivery_item" EntitySet="delivery_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoice_item_comodity" Association="Self.FK_invoice_item_comodity">
+            <End Role="comodity" EntitySet="comodities" />
+            <End Role="invoice_item" EntitySet="invoice_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contractor_contractor_type" Association="Self.FK_contractor_contractor_type">
+            <End Role="contractor_type" EntitySet="contractor_type" />
+            <End Role="contractor" EntitySet="contractors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contractor_curency" Association="Self.FK_contractor_curency">
+            <End Role="curency" EntitySet="curencies" />
+            <End Role="contractor" EntitySet="contractors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_contractor" Association="Self.FK_delivery_contractor">
+            <End Role="contractor" EntitySet="contractors" />
+            <End Role="delivery" EntitySet="deliveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoice_contractor" Association="Self.FK_invoice_contractor">
+            <End Role="contractor" EntitySet="contractors" />
+            <End Role="invoice" EntitySet="invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_item_curency" Association="Self.FK_delivery_item_curency">
+            <End Role="curency" EntitySet="curencies" />
+            <End Role="delivery_item" EntitySet="delivery_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_delivery_status" Association="Self.FK_delivery_delivery_status">
+            <End Role="delivery_status" EntitySet="delivery_status" />
+            <End Role="delivery" EntitySet="deliveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_item_delivery" Association="Self.FK_delivery_item_delivery">
+            <End Role="delivery" EntitySet="deliveries" />
+            <End Role="delivery_item" EntitySet="delivery_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_payment_method" Association="Self.FK_delivery_payment_method">
+            <End Role="payment_method" EntitySet="payment_method" />
+            <End Role="delivery" EntitySet="deliveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_warehouse" Association="Self.FK_delivery_warehouse">
+            <End Role="warehouse" EntitySet="warehouses" />
+            <End Role="delivery" EntitySet="deliveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_delivery_warehouse1" Association="Self.FK_delivery_warehouse1">
+            <End Role="warehouse" EntitySet="warehouses" />
+            <End Role="delivery" EntitySet="deliveries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_employ_employ_type" Association="Self.FK_employ_employ_type">
+            <End Role="employ_type" EntitySet="employ_type" />
+            <End Role="employ" EntitySet="employs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_employ_warehouse" Association="Self.FK_employ_warehouse">
+            <End Role="warehouse" EntitySet="warehouses" />
+            <End Role="employ" EntitySet="employs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoice_item_invoice" Association="Self.FK_invoice_item_invoice">
+            <End Role="invoice" EntitySet="invoices" />
+            <End Role="invoice_item" EntitySet="invoice_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoice_payment_method" Association="Self.FK_invoice_payment_method">
+            <End Role="payment_method" EntitySet="payment_method" />
+            <End Role="invoice" EntitySet="invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_storage_size_type" Association="Self.FK_storage_size_type">
+            <End Role="size_type" EntitySet="size_type" />
+            <End Role="storage" EntitySet="storages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_storage_warehouse" Association="Self.FK_storage_warehouse">
+            <End Role="warehouse" EntitySet="warehouses" />
+            <End Role="storage" EntitySet="storages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ZaliczenieModelStoreContainer" CdmEntityContainer="ZaliczenieEntities">
+          <EntitySetMapping Name="brands">
+            <EntityTypeMapping TypeName="ZaliczenieModel.brand">
+              <MappingFragment StoreEntitySet="brand">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="building_number" ColumnName="building_number" />
+                <ScalarProperty Name="flat_number" ColumnName="flat_number" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comodities">
+            <EntityTypeMapping TypeName="ZaliczenieModel.comodity">
+              <MappingFragment StoreEntitySet="comodity">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ordinal_number" ColumnName="ordinal_number" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="net_unit_price" ColumnName="net_unit_price" />
+                <ScalarProperty Name="vat_rate" ColumnName="vat_rate" />
+                <ScalarProperty Name="gross_unit_price" ColumnName="gross_unit_price" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="size_type_id" ColumnName="size_type_id" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comodity_category">
+            <EntityTypeMapping TypeName="ZaliczenieModel.comodity_category">
+              <MappingFragment StoreEntitySet="comodity_category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="vat_rate" ColumnName="vat_rate" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contractors">
+            <EntityTypeMapping TypeName="ZaliczenieModel.contractor">
+              <MappingFragment StoreEntitySet="contractor">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="tax_number" ColumnName="tax_number" />
+                <ScalarProperty Name="tax_name" ColumnName="tax_name" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="building_number" ColumnName="building_number" />
+                <ScalarProperty Name="flat_number" ColumnName="flat_number" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="post_office_city" ColumnName="post_office_city" />
+                <ScalarProperty Name="additional_info" ColumnName="additional_info" />
+                <ScalarProperty Name="is_vat_taxpayer" ColumnName="is_vat_taxpayer" />
+                <ScalarProperty Name="should_include_vat_27" ColumnName="should_include_vat_27" />
+                <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+                <ScalarProperty Name="contractor_type_id" ColumnName="contractor_type_id" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contractor_type">
+            <EntityTypeMapping TypeName="ZaliczenieModel.contractor_type">
+              <MappingFragment StoreEntitySet="contractor_type">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="curencies">
+            <EntityTypeMapping TypeName="ZaliczenieModel.curency">
+              <MappingFragment StoreEntitySet="curency">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="convert_rate" ColumnName="convert_rate" />
+                <ScalarProperty Name="is_default" ColumnName="is_default" />
+                <ScalarProperty Name="sign" ColumnName="sign" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deliveries">
+            <EntityTypeMapping TypeName="ZaliczenieModel.delivery">
+              <MappingFragment StoreEntitySet="delivery">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="destination_warehouse_id" ColumnName="destination_warehouse_id" />
+                <ScalarProperty Name="source_contractor_id" ColumnName="source_contractor_id" />
+                <ScalarProperty Name="source_warehouse_id" ColumnName="source_warehouse_id" />
+                <ScalarProperty Name="delivery_status_id" ColumnName="delivery_status_id" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="due_date" ColumnName="due_date" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="delivery_item">
+            <EntityTypeMapping TypeName="ZaliczenieModel.delivery_item">
+              <MappingFragment StoreEntitySet="delivery_item">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="comodity_id" ColumnName="comodity_id" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="delivery_id" ColumnName="delivery_id" />
+                <ScalarProperty Name="unit_cost" ColumnName="unit_cost" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="curency_id" ColumnName="curency_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="delivery_status">
+            <EntityTypeMapping TypeName="ZaliczenieModel.delivery_status">
+              <MappingFragment StoreEntitySet="delivery_status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employs">
+            <EntityTypeMapping TypeName="ZaliczenieModel.employ">
+              <MappingFragment StoreEntitySet="employ">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="middle_name" ColumnName="middle_name" />
+                <ScalarProperty Name="psel_number" ColumnName="psel_number" />
+                <ScalarProperty Name="employ_type_id" ColumnName="employ_type_id" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="building_number" ColumnName="building_number" />
+                <ScalarProperty Name="flat_number" ColumnName="flat_number" />
+                <ScalarProperty Name="warehouse_id" ColumnName="warehouse_id" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employ_type">
+            <EntityTypeMapping TypeName="ZaliczenieModel.employ_type">
+              <MappingFragment StoreEntitySet="employ_type">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invoices">
+            <EntityTypeMapping TypeName="ZaliczenieModel.invoice">
+              <MappingFragment StoreEntitySet="invoice">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="invoice_number" ColumnName="invoice_number" />
+                <ScalarProperty Name="contractor_id" ColumnName="contractor_id" />
+                <ScalarProperty Name="sale_date" ColumnName="sale_date" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="payment_method_id" ColumnName="payment_method_id" />
+                <ScalarProperty Name="payment_date" ColumnName="payment_date" />
+                <ScalarProperty Name="net_value" ColumnName="net_value" />
+                <ScalarProperty Name="gross_value" ColumnName="gross_value" />
+                <ScalarProperty Name="paid_value" ColumnName="paid_value" />
+                <ScalarProperty Name="pending_payment_value" ColumnName="pending_payment_value" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invoice_item">
+            <EntityTypeMapping TypeName="ZaliczenieModel.invoice_item">
+              <MappingFragment StoreEntitySet="invoice_item">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="comodity_id" ColumnName="comodity_id" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payment_method">
+            <EntityTypeMapping TypeName="ZaliczenieModel.payment_method">
+              <MappingFragment StoreEntitySet="payment_method">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_available_externally" ColumnName="is_available_externally" />
+                <ScalarProperty Name="is_available_internally" ColumnName="is_available_internally" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="size_type">
+            <EntityTypeMapping TypeName="ZaliczenieModel.size_type">
+              <MappingFragment StoreEntitySet="size_type">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="max_height" ColumnName="max_height" />
+                <ScalarProperty Name="max_width" ColumnName="max_width" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="storages">
+            <EntityTypeMapping TypeName="ZaliczenieModel.storage">
+              <MappingFragment StoreEntitySet="storage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="warehouse_id" ColumnName="warehouse_id" />
+                <ScalarProperty Name="size_type_id" ColumnName="size_type_id" />
+                <ScalarProperty Name="total_count" ColumnName="total_count" />
+                <ScalarProperty Name="free_count" ColumnName="free_count" />
+                <ScalarProperty Name="taken_count" ColumnName="taken_count" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ZaliczenieModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="warehouses">
+            <EntityTypeMapping TypeName="ZaliczenieModel.warehouse">
+              <MappingFragment StoreEntitySet="warehouse">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
