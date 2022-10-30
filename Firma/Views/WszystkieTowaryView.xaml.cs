@@ -18,7 +18,7 @@ namespace Firma.Views
     /// <summary>
     /// Interaction logic for WszystkieTowaryView.xaml
     /// </summary>
-    public partial class WszystkieTowaryView : WszystkieViewBase
+    public partial class WszystkieTowaryView : AllViewBase
     {
         public WszystkieTowaryView()
         {
