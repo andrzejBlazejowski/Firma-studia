@@ -66,10 +66,13 @@ namespace Firma.ViewModels
             return new List<CommandViewModel>
             {
                 new CommandViewModel("Towary",new BaseCommand(showAllTowar)), //to tworzy pierwszy przycisk o nazwie Towary, który pokaże zakładkę wszystkie towary
-                new CommandViewModel("Producenci",new BaseCommand(showAllBrands)), //to tworzy pierwszy przycisk o nazwie Towary, który pokaże zakładkę wszystkie towary
-                new CommandViewModel("Kategorie Towarów",new BaseCommand(showAllComodityCategories)), //to tworzy pierwszy przycisk o nazwie Towary, który pokaże zakładkę wszystkie towary
-                new CommandViewModel("kontrachenci",new BaseCommand(showAllContractors)), //to tworzy pierwszy przycisk o nazwie Towary, który pokaże zakładkę wszystkie towary
-                new CommandViewModel("typy kontrachentów",new BaseCommand(showAllContractorTypes)), //to tworzy pierwszy przycisk o nazwie Towary, który pokaże zakładkę wszystkie towary
+                new CommandViewModel("Producenci",new BaseCommand(showAllBrands)),
+                new CommandViewModel("Kategorie Towarów",new BaseCommand(showAllComodityCategories)),
+                new CommandViewModel("kontrachenci",new BaseCommand(showAllContractors)), 
+                new CommandViewModel("typy kontrachentów",new BaseCommand(showAllContractorTypes)),
+                new CommandViewModel("waluty",new BaseCommand(showAllCurencies)),
+               
+                
                 new CommandViewModel("Towar",new BaseCommand(()=>createView(new NowyTowarViewModel()))),
                 new CommandViewModel("Katura",new BaseCommand(()=>createView(new NowaFakturaViewModel()))),
                 new CommandViewModel("Faktury",new BaseCommand(showAllFaktury)),
@@ -190,6 +193,21 @@ namespace Firma.ViewModels
             {
                 //tworzymy nowa zakladke Wszystkie towary
                 workspace = new AllContractorTypesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllCurencies()
+        {
+            //sz....
+            AllCurenciesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllCurenciesViewModel) as AllCurenciesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllCurenciesViewModel();
                 //i dodajemy ja do kolekcji zakladek
                 this.Workspaces.Add(workspace);
             }

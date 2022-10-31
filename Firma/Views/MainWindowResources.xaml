@@ -26,6 +26,10 @@
         <vw:AllContractorTypesView/>
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:AllCurenciesViewModel}">
+        <vw:AllCurenciesView/>
+    </DataTemplate>
+
 
     <DataTemplate DataType="{x:Type vm:NowyTowarViewModel}">
         <vw:NowyTowarView/>
