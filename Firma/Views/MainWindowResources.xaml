@@ -6,10 +6,18 @@
 
     <!--tu bedziemy laczyc View z ViewModel zakładek-->
    
-    <DataTemplate DataType="{x:Type vm:WszystkieTowaryViewModel}">
-        <vw:WszystkieTowaryView/>
+    <DataTemplate DataType="{x:Type vm:AllComoditiesViewModel}">
+        <vw:AllComoditiesView/>
     </DataTemplate>
     
+    <DataTemplate DataType="{x:Type vm:AllBrandsViewModel}">
+        <vw:AllBrandsView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AllComodityCategoriesViewModel}">
+        <vw:AllComodityCategoriesView/>
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:NowyTowarViewModel}">
         <vw:NowyTowarView/>
     </DataTemplate>

@@ -66,6 +66,8 @@ namespace Firma.ViewModels
             return new List<CommandViewModel>
             {
                 new CommandViewModel("Towary",new BaseCommand(showAllTowar)), //to tworzy pierwszy przycisk o nazwie Towary, który pokaże zakładkę wszystkie towary
+                new CommandViewModel("Producenci",new BaseCommand(showAllBrands)), //to tworzy pierwszy przycisk o nazwie Towary, który pokaże zakładkę wszystkie towary
+                new CommandViewModel("Kategorie Towarów",new BaseCommand(showAllComodityCategories)), //to tworzy pierwszy przycisk o nazwie Towary, który pokaże zakładkę wszystkie towary
                 new CommandViewModel("Towar",new BaseCommand(()=>createView(new NowyTowarViewModel()))),
                 new CommandViewModel("Katura",new BaseCommand(()=>createView(new NowaFakturaViewModel()))),
                 new CommandViewModel("Faktury",new BaseCommand(showAllFaktury)),
@@ -135,12 +137,42 @@ namespace Firma.ViewModels
         private void showAllTowar()
         {
             //sz....
-            WszystkieTowaryViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is WszystkieTowaryViewModel) as WszystkieTowaryViewModel;
+            AllComoditiesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllComoditiesViewModel) as AllComoditiesViewModel;
             //jezeli ....
             if(workspace == null)
             {
                 //tworzymy nowa zakladke Wszystkie towary
-                workspace=new WszystkieTowaryViewModel();
+                workspace=new AllComoditiesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllBrands()
+        {
+            //sz....
+            AllBrandsViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllBrandsViewModel) as AllBrandsViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllBrandsViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllComodityCategories()
+        {
+            //sz....
+            AllComodityCategoriesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllComodityCategoriesViewModel) as AllComodityCategoriesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllComodityCategoriesViewModel();
                 //i dodajemy ja do kolekcji zakladek
                 this.Workspaces.Add(workspace);
             }

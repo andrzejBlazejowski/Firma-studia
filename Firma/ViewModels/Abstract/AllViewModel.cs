@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace Firma.ViewModels.Abstract
 {
-    public abstract class WszystkieViewModel<T> :WorkspaceViewModel //bo wszystkie zakl....
+    public abstract class AllViewModel<T> :WorkspaceViewModel //bo wszystkie zakl....
     {
         //just test commit
         #region Fields
@@ -55,7 +55,7 @@ namespace Firma.ViewModels.Abstract
         }
         #endregion
         #region Konstruktor
-        public WszystkieViewModel(string displayName)
+        public AllViewModel(string displayName)
         {
             base.DisplayName = displayName;
             this.zaliczenieEntities = new ZaliczenieEntities();
