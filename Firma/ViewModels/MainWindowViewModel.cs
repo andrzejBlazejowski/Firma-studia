@@ -71,8 +71,9 @@ namespace Firma.ViewModels
                 new CommandViewModel("kontrachenci",new BaseCommand(showAllContractors)), 
                 new CommandViewModel("typy kontrachentów",new BaseCommand(showAllContractorTypes)),
                 new CommandViewModel("waluty",new BaseCommand(showAllCurencies)),
-               
-                
+                new CommandViewModel("dostawy",new BaseCommand(showAllDeliveries)),
+
+
                 new CommandViewModel("Towar",new BaseCommand(()=>createView(new NowyTowarViewModel()))),
                 new CommandViewModel("Katura",new BaseCommand(()=>createView(new NowaFakturaViewModel()))),
                 new CommandViewModel("Faktury",new BaseCommand(showAllFaktury)),
@@ -208,6 +209,21 @@ namespace Firma.ViewModels
             {
                 //tworzymy nowa zakladke Wszystkie towary
                 workspace = new AllCurenciesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllDeliveries()
+        {
+            //sz....
+            AllDeliveryViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllDeliveryViewModel) as AllDeliveryViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllDeliveryViewModel();
                 //i dodajemy ja do kolekcji zakladek
                 this.Workspaces.Add(workspace);
             }
