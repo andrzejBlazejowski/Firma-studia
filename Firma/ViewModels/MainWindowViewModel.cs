@@ -72,6 +72,8 @@ namespace Firma.ViewModels
                 new CommandViewModel("typy kontrachentów",new BaseCommand(showAllContractorTypes)),
                 new CommandViewModel("waluty",new BaseCommand(showAllCurencies)),
                 new CommandViewModel("dostawy",new BaseCommand(showAllDeliveries)),
+                new CommandViewModel("pozycje dostawy",new BaseCommand(showAllDeliveryItems)),
+                new CommandViewModel("statusy dostawy",new BaseCommand(showAllDeliveryStatuses)),
 
 
                 new CommandViewModel("Towar",new BaseCommand(()=>createView(new NowyTowarViewModel()))),
@@ -179,6 +181,36 @@ namespace Firma.ViewModels
             {
                 //tworzymy nowa zakladke Wszystkie towary
                 workspace = new AllContractorsViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllDeliveryItems()
+        {
+            //sz....
+            AllDeliveryItemsViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllDeliveryItemsViewModel) as AllDeliveryItemsViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllDeliveryItemsViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllDeliveryStatuses()
+        {
+            //sz....
+            AllDeliveryStatusesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllDeliveryStatusesViewModel) as AllDeliveryStatusesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllDeliveryStatusesViewModel();
                 //i dodajemy ja do kolekcji zakladek
                 this.Workspaces.Add(workspace);
             }

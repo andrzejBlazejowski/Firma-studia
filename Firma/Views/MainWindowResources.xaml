@@ -33,7 +33,14 @@
     <DataTemplate DataType="{x:Type vm:AllCurenciesViewModel}">
         <vw:AllCurenciesView/>
     </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:AllDeliveryItemsViewModel}">
+        <vw:AllDeliveryItemsView/>
+    </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:AllDeliveryStatusesViewModel}">
+        <vw:AllDeliveryStatusesView/>
+    </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:NowyTowarViewModel}">
         <vw:NowyTowarView/>
