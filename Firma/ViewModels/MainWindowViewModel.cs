@@ -75,6 +75,7 @@ namespace Firma.ViewModels
                 new CommandViewModel("pozycje dostawy",new BaseCommand(showAllDeliveryItems)),
                 new CommandViewModel("statusy dostawy",new BaseCommand(showAllDeliveryStatuses)),
                 new CommandViewModel("pracownicy",new BaseCommand(showAllEmployees)),
+                new CommandViewModel("typy pracowników",new BaseCommand(showAllEmployeeTypes)),
 
 
                 new CommandViewModel("Towar",new BaseCommand(()=>createView(new NowyTowarViewModel()))),
@@ -287,6 +288,21 @@ namespace Firma.ViewModels
             {
                 //tworzymy nowa zakladke Wszystkie towary
                 workspace = new AllEmplyeesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllEmployeeTypes()
+        {
+            //sz....
+            AllEmplyeeTypesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllEmplyeeTypesViewModel) as AllEmplyeeTypesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllEmplyeeTypesViewModel();
                 //i dodajemy ja do kolekcji zakladek
                 this.Workspaces.Add(workspace);
             }

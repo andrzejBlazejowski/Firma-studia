@@ -158,7 +158,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="is_active" Type="varchar" MaxLength="50" Nullable="false" />
+			<Property Name="is_active" Type="bit" Nullable="false" />
           <Property Name="create_date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="invoice">
@@ -788,7 +788,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="is_active" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+		  <Property Name="is_active" Type="Boolean" Nullable="false" />
           <Property Name="create_date" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="employs" Relationship="Self.FK_employ_employ_type" FromRole="employ_type" ToRole="employ" />
         </EntityType>

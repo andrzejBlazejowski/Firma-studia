@@ -4,6 +4,47 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
+      <Diagram DiagramId="2adf808575e549d9a6826ecdc2485cfd" Name="Diagram1">
+        <EntityTypeShape EntityType="ZaliczenieModel.brand" Width="1.5" PointX="3.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.comodity" Width="1.5" PointX="6" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.comodity_category" Width="1.5" PointX="3.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.contractor" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.contractor_type" Width="1.5" PointX="1.5" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.curency" Width="1.5" PointX="1.5" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.delivery" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.delivery_item" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.delivery_status" Width="1.5" PointX="0.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.employ" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.employ_type" Width="1.5" PointX="3.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.invoice" Width="1.5" PointX="6" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.invoice_item" Width="1.5" PointX="8.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.payment_method" Width="1.5" PointX="0.75" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.size_type" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.storage" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZaliczenieModel.warehouse" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <AssociationConnector Association="ZaliczenieModel.FK_comodity_brand" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_comodity_comodity_category" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_comodity_size_type" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_delivery_item_comodity" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_invoice_item_comodity" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_contractor_contractor_type" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_contractor_curency" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_delivery_contractor" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_invoice_contractor" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_delivery_item_curency" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_delivery_delivery_status" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_delivery_item_delivery" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_delivery_payment_method" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_delivery_warehouse" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_delivery_warehouse1" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_employ_employ_type" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_employ_warehouse" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_invoice_item_invoice" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_invoice_payment_method" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_storage_size_type" ManuallyRouted="false" />
+        <AssociationConnector Association="ZaliczenieModel.FK_storage_warehouse" ManuallyRouted="false" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

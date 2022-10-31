@@ -4201,7 +4201,7 @@ namespace Firma.Models
         /// <param name="description">Initial value of the description property.</param>
         /// <param name="is_active">Initial value of the is_active property.</param>
         /// <param name="create_date">Initial value of the create_date property.</param>
-        public static employ_type Createemploy_type(global::System.Int32 id, global::System.String name, global::System.String description, global::System.String is_active, global::System.DateTime create_date)
+        public static employ_type Createemploy_type(global::System.Int32 id, global::System.String name, global::System.String description, global::System.Boolean is_active, global::System.DateTime create_date)
         {
             employ_type employ_type = new employ_type();
             employ_type.id = id;
@@ -4290,13 +4290,13 @@ namespace Firma.Models
         private global::System.String _description;
         partial void OndescriptionChanging(global::System.String value);
         partial void OndescriptionChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
         [DataMemberAttribute()]
-        public global::System.String is_active
+        public global::System.Boolean is_active
         {
             get
             {
@@ -4306,15 +4306,15 @@ namespace Firma.Models
             {
                 Onis_activeChanging(value);
                 ReportPropertyChanging("is_active");
-                _is_active = StructuralObject.SetValidValue(value, false, "is_active");
+                _is_active = StructuralObject.SetValidValue(value, "is_active");
                 ReportPropertyChanged("is_active");
                 Onis_activeChanged();
             }
         }
-        private global::System.String _is_active;
-        partial void Onis_activeChanging(global::System.String value);
+        private global::System.Boolean _is_active;
+        partial void Onis_activeChanging(global::System.Boolean value);
         partial void Onis_activeChanged();
-    
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>

@@ -45,7 +45,11 @@
     <DataTemplate DataType="{x:Type vm:AllEmplyeesViewModel}">
         <vw:AllEmployeesView/>
     </DataTemplate>
-
+    
+    <DataTemplate DataType="{x:Type vm:AllEmplyeeTypesViewModel}">
+        <vw:AllEmployeeTypesView/>
+    </DataTemplate>
+    
 
     <DataTemplate DataType="{x:Type vm:NowyTowarViewModel}">
         <vw:NowyTowarView/>
