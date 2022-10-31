@@ -18,7 +18,7 @@ namespace Firma.ViewModels
         
         #region Konstruktor
         public AllComoditiesViewModel()
-            :base("comodities")
+            :base("towary")
         {
         }
         #endregion

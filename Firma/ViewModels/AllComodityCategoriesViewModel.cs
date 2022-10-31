@@ -18,7 +18,7 @@ namespace Firma.ViewModels
 
         #region Konstruktor
         public AllComodityCategoriesViewModel()
-            : base("comodity_category")
+            : base("kategorie towarow")
         {
         }
         #endregion

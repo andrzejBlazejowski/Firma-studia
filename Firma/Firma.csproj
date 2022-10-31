@@ -52,6 +52,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ModelZaliczenie.edmx</DependentUpon>
     </Compile>
+    <Compile Update="Views\AllContractorsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\AllComodityCategoriesView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -61,6 +64,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Views\AllContractorsView.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\AllComodityCategoriesView.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>

@@ -18,6 +18,10 @@
         <vw:AllComodityCategoriesView/>
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:AllContractorsViewModel}">
+        <vw:AllContractorsView/>
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:NowyTowarViewModel}">
         <vw:NowyTowarView/>
     </DataTemplate>

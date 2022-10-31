@@ -68,6 +68,7 @@ namespace Firma.ViewModels
                 new CommandViewModel("Towary",new BaseCommand(showAllTowar)), //to tworzy pierwszy przycisk o nazwie Towary, który pokaże zakładkę wszystkie towary
                 new CommandViewModel("Producenci",new BaseCommand(showAllBrands)), //to tworzy pierwszy przycisk o nazwie Towary, który pokaże zakładkę wszystkie towary
                 new CommandViewModel("Kategorie Towarów",new BaseCommand(showAllComodityCategories)), //to tworzy pierwszy przycisk o nazwie Towary, który pokaże zakładkę wszystkie towary
+                new CommandViewModel("kontrachenci",new BaseCommand(showAllContractors)), //to tworzy pierwszy przycisk o nazwie Towary, który pokaże zakładkę wszystkie towary
                 new CommandViewModel("Towar",new BaseCommand(()=>createView(new NowyTowarViewModel()))),
                 new CommandViewModel("Katura",new BaseCommand(()=>createView(new NowaFakturaViewModel()))),
                 new CommandViewModel("Faktury",new BaseCommand(showAllFaktury)),
@@ -158,6 +159,21 @@ namespace Firma.ViewModels
             {
                 //tworzymy nowa zakladke Wszystkie towary
                 workspace = new AllBrandsViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllContractors()
+        {
+            //sz....
+            AllContractorsViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllContractorsViewModel) as AllContractorsViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllContractorsViewModel();
                 //i dodajemy ja do kolekcji zakladek
                 this.Workspaces.Add(workspace);
             }

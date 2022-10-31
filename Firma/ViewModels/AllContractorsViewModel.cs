@@ -13,24 +13,24 @@ using System.Windows.Input;
 
 namespace Firma.ViewModels
 {
-    public class AllBrandsViewModel : AllViewModel<brand>
+    public class AllContractorsViewModel : AllViewModel<contractor>
     {
 
         #region Konstruktor
-        public AllBrandsViewModel()
-            : base("producenci")
+        public AllContractorsViewModel()
+            : base("contractor")
         {
         }
         #endregion
         #region Helpers
         public override void Load()
         {
-            List = new ObservableCollection<brand>
+            List = new ObservableCollection<contractor>
                 (
                   //to jest zapytanie linq (obiektowa wersja SQL)
-                  from brand in ZaliczenieEntities.brands //dla kazdego...
-                  where brand.is_active == true
-                  select brand //wy...
+                  from contractors in ZaliczenieEntities.contractors //dla kazdego...
+                  where contractors.is_active == true
+                  select contractors //wy...
                 );
         }
         #endregion
