@@ -42,6 +42,11 @@
         <vw:AllDeliveryStatusesView/>
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:AllEmplyeesViewModel}">
+        <vw:AllEmployeesView/>
+    </DataTemplate>
+
+
     <DataTemplate DataType="{x:Type vm:NowyTowarViewModel}">
         <vw:NowyTowarView/>
     </DataTemplate>
