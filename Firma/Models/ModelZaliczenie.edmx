@@ -140,7 +140,7 @@
           <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="middle_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="psel_number" Type="varbinary" MaxLength="50" Nullable="false" />
+          <Property Name="pesel_number" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="employ_type_id" Type="int" Nullable="false" />
           <Property Name="country" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
@@ -768,7 +768,7 @@
           <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="middle_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="psel_number" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+          <Property Name="pesel_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="employ_type_id" Type="Int32" Nullable="false" />
           <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -1399,7 +1399,7 @@
                 <ScalarProperty Name="first_name" ColumnName="first_name" />
                 <ScalarProperty Name="last_name" ColumnName="last_name" />
                 <ScalarProperty Name="middle_name" ColumnName="middle_name" />
-                <ScalarProperty Name="psel_number" ColumnName="psel_number" />
+                <ScalarProperty Name="pesel_number" ColumnName="pesel_number" />
                 <ScalarProperty Name="employ_type_id" ColumnName="employ_type_id" />
                 <ScalarProperty Name="country" ColumnName="country" />
                 <ScalarProperty Name="city" ColumnName="city" />

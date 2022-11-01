@@ -3726,7 +3726,7 @@ namespace Firma.Models
         /// <param name="first_name">Initial value of the first_name property.</param>
         /// <param name="last_name">Initial value of the last_name property.</param>
         /// <param name="middle_name">Initial value of the middle_name property.</param>
-        /// <param name="psel_number">Initial value of the psel_number property.</param>
+        /// <param name="pesel_number">Initial value of the pesel_number property.</param>
         /// <param name="employ_type_id">Initial value of the employ_type_id property.</param>
         /// <param name="country">Initial value of the country property.</param>
         /// <param name="city">Initial value of the city property.</param>
@@ -3736,14 +3736,14 @@ namespace Firma.Models
         /// <param name="warehouse_id">Initial value of the warehouse_id property.</param>
         /// <param name="is_active">Initial value of the is_active property.</param>
         /// <param name="create_date">Initial value of the create_date property.</param>
-        public static employ Createemploy(global::System.Int32 id, global::System.String first_name, global::System.String last_name, global::System.String middle_name, global::System.Byte[] psel_number, global::System.Int32 employ_type_id, global::System.String country, global::System.String city, global::System.String street, global::System.String building_number, global::System.String flat_number, global::System.Int32 warehouse_id, global::System.Boolean is_active, global::System.DateTime create_date)
+        public static employ Createemploy(global::System.Int32 id, global::System.String first_name, global::System.String last_name, global::System.String middle_name, global::System.String pesel_number, global::System.Int32 employ_type_id, global::System.String country, global::System.String city, global::System.String street, global::System.String building_number, global::System.String flat_number, global::System.Int32 warehouse_id, global::System.Boolean is_active, global::System.DateTime create_date)
         {
             employ employ = new employ();
             employ.id = id;
             employ.first_name = first_name;
             employ.last_name = last_name;
             employ.middle_name = middle_name;
-            employ.psel_number = psel_number;
+            employ.pesel_number = pesel_number;
             employ.employ_type_id = employ_type_id;
             employ.country = country;
             employ.city = city;
@@ -3864,24 +3864,24 @@ namespace Firma.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Byte[] psel_number
+        public global::System.String pesel_number
         {
             get
             {
-                return StructuralObject.GetValidValue(_psel_number);
+                return _pesel_number;
             }
             set
             {
-                Onpsel_numberChanging(value);
-                ReportPropertyChanging("psel_number");
-                _psel_number = StructuralObject.SetValidValue(value, false, "psel_number");
-                ReportPropertyChanged("psel_number");
-                Onpsel_numberChanged();
+                Onpesel_numberChanging(value);
+                ReportPropertyChanging("pesel_number");
+                _pesel_number = StructuralObject.SetValidValue(value, false, "pesel_number");
+                ReportPropertyChanged("pesel_number");
+                Onpesel_numberChanged();
             }
         }
-        private global::System.Byte[] _psel_number;
-        partial void Onpsel_numberChanging(global::System.Byte[] value);
-        partial void Onpsel_numberChanged();
+        private global::System.String _pesel_number;
+        partial void Onpesel_numberChanging(global::System.String value);
+        partial void Onpesel_numberChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

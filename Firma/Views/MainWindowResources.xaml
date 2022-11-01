@@ -70,6 +70,10 @@
         <vw:AllStoragesView/>
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:AllWarehousesViewModel}">
+        <vw:AllWarehousesView/>
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:NowyTowarViewModel}">
         <vw:NowyTowarView/>
     </DataTemplate>

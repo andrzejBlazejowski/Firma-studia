@@ -19,12 +19,12 @@
                 <DataGridTextColumn Header="numer budynkuy" Binding="{Binding Path=building_number}"/>
                 <DataGridTextColumn Header="numer lokalu" Binding="{Binding Path=flat_number}"/>
                 <DataGridTextColumn Header="kod pocztowy" Binding="{Binding Path=zip_code}"/>
-                <DataGridTextColumn Header="miasto pocztowe" Binding="{Binding Path=post_ofice_city}"/>
+                <DataGridTextColumn Header="miasto pocztowe" Binding="{Binding Path=post_office_city}"/>
                 <DataGridTextColumn Header="dodatkowe informacje" Binding="{Binding Path=additional_info}"/>
                 <DataGridTextColumn Header="Czy płaci Vat?" Binding="{Binding Path=is_vat_taxpayer}"/>
-                <DataGridTextColumn Header="Czy płaci Vat27?" Binding="{Binding Path=should_include_vat27}"/>
-                <DataGridTextColumn Header="waluta" Binding="{Binding Path=curency_id}"/>
-                <DataGridTextColumn Header="kategoria" Binding="{Binding Path=category_id}"/>
+                <DataGridTextColumn Header="Czy płaci Vat27?" Binding="{Binding Path=should_include_vat_27}"/>
+                <DataGridTextColumn Header="waluta" Binding="{Binding Path=currency_id}"/>
+                <DataGridTextColumn Header="typ kontraktora" Binding="{Binding Path=contractor_type_id}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

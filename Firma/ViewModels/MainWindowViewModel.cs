@@ -81,11 +81,12 @@ namespace Firma.ViewModels
                 new CommandViewModel("metody płatności",new BaseCommand(showAllPaymentMethods)),
                 new CommandViewModel("dostępne rozmiary",new BaseCommand(showAllSizeTypes)),
                 new CommandViewModel("miejsca w magazynach",new BaseCommand(showAllStorages)),
+                new CommandViewModel("magazyny",new BaseCommand(showAllWarehouses)),
 
 
-                new CommandViewModel("Towar",new BaseCommand(()=>createView(new NowyTowarViewModel()))),
+                /*new CommandViewModel("Towar",new BaseCommand(()=>createView(new NowyTowarViewModel()))),
                 new CommandViewModel("Katura",new BaseCommand(()=>createView(new NowaFakturaViewModel()))),
-                new CommandViewModel("Faktury",new BaseCommand(showAllFaktury)),
+                new CommandViewModel("Faktury",new BaseCommand(showAllFaktury)),*/
             };
         }
         #endregion
@@ -389,6 +390,22 @@ namespace Firma.ViewModels
             //aktywujemy zakladke
             this.setActiveWorkspace(workspace);
         }
+        private void showAllWarehouses()
+        {
+            //sz....
+            AllWarehousesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllWarehousesViewModel) as AllWarehousesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllWarehousesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        
 
 
         private void setActiveWorkspace(WorkspaceViewModel workspace)
