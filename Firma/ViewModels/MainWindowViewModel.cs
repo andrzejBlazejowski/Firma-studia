@@ -76,6 +76,9 @@ namespace Firma.ViewModels
                 new CommandViewModel("statusy dostawy",new BaseCommand(showAllDeliveryStatuses)),
                 new CommandViewModel("pracownicy",new BaseCommand(showAllEmployees)),
                 new CommandViewModel("typy pracowników",new BaseCommand(showAllEmployeeTypes)),
+                new CommandViewModel("faktury",new BaseCommand(showAllInvoices)),
+                new CommandViewModel("pozycje faktury",new BaseCommand(showAllInvoiceItems)),
+                
 
 
                 new CommandViewModel("Towar",new BaseCommand(()=>createView(new NowyTowarViewModel()))),
@@ -303,6 +306,36 @@ namespace Firma.ViewModels
             {
                 //tworzymy nowa zakladke Wszystkie towary
                 workspace = new AllEmplyeeTypesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllInvoices()
+        {
+            //sz....
+            AllInvoicesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllInvoicesViewModel) as AllInvoicesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllInvoicesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllInvoiceItems()
+        {
+            //sz....
+            AllInvoiceItemsViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllInvoiceItemsViewModel) as AllInvoiceItemsViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllInvoiceItemsViewModel();
                 //i dodajemy ja do kolekcji zakladek
                 this.Workspaces.Add(workspace);
             }
