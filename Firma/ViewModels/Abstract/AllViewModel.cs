@@ -1,4 +1,5 @@
 ﻿using Firma.Helpers;
+using Firma.Models;
 using Firma.Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,16 +11,17 @@ using System.Windows.Input;
 
 namespace Firma.ViewModels.Abstract
 {
-    public abstract class WszystkieViewModel<T> :WorkspaceViewModel //bo wszystkie zakl....
+    public abstract class AllViewModel<T> :WorkspaceViewModel //bo wszystkie zakl....
     {
+        //just test commit
         #region Fields
         //to jest obiekt, ktory...
-        private readonly FakturyEntities fakturyEntities;
-        public FakturyEntities FakturyEntities 
+        private readonly ZaliczenieEntities zaliczenieEntities;
+        public ZaliczenieEntities ZaliczenieEntities
         { 
             get
             {
-                return fakturyEntities;
+                return zaliczenieEntities;
             }
         }
         //to jest komenda do za ladowania towarow
@@ -53,10 +55,10 @@ namespace Firma.ViewModels.Abstract
         }
         #endregion
         #region Konstruktor
-        public WszystkieViewModel(string displayName)
+        public AllViewModel(string displayName)
         {
             base.DisplayName = displayName;
-            this.fakturyEntities = new FakturyEntities();
+            this.zaliczenieEntities = new ZaliczenieEntities();
         }
         #endregion
         #region Helpers

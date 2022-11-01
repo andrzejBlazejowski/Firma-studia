@@ -6,10 +6,74 @@
 
     <!--tu bedziemy laczyc View z ViewModel zakładek-->
    
-    <DataTemplate DataType="{x:Type vm:WszystkieTowaryViewModel}">
-        <vw:WszystkieTowaryView/>
+    <DataTemplate DataType="{x:Type vm:AllComoditiesViewModel}">
+        <vw:AllComoditiesView/>
     </DataTemplate>
     
+    <DataTemplate DataType="{x:Type vm:AllBrandsViewModel}">
+        <vw:AllBrandsView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AllComodityCategoriesViewModel}">
+        <vw:AllComodityCategoriesView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AllDeliveryViewModel}">
+        <vw:AllDeliveriesView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AllContractorsViewModel}">
+        <vw:AllContractorsView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:AllContractorTypesViewModel}">
+        <vw:AllContractorTypesView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AllCurenciesViewModel}">
+        <vw:AllCurenciesView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:AllDeliveryItemsViewModel}">
+        <vw:AllDeliveryItemsView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AllDeliveryStatusesViewModel}">
+        <vw:AllDeliveryStatusesView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AllEmplyeesViewModel}">
+        <vw:AllEmployeesView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:AllEmplyeeTypesViewModel}">
+        <vw:AllEmployeeTypesView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AllInvoicesViewModel}">
+        <vw:AllInvoicesView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AllInvoiceItemsViewModel}">
+        <vw:AllInvoiceItemsView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AllPaymentMethodsViewModel}">
+        <vw:AllPaymentMethodsView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:AllSizeTypesViewModel}">
+        <vw:AllSizeTypesView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:AllStoragesViewModel}">
+        <vw:AllStoragesView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AllWarehousesViewModel}">
+        <vw:AllWarehousesView/>
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:NowyTowarViewModel}">
         <vw:NowyTowarView/>
     </DataTemplate>

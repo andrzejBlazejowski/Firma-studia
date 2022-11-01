@@ -41,7 +41,7 @@ namespace Firma.Views
     /// Krok 2)
     /// Przejdź dalej i użyj swojego formantu w pliku XAML.
     ///
-    ///     <MyNamespace:WszystkieViewBase/>
+    ///     <MyNamespace:AllViewBase/>
     ///
     /// </summary>
     public class WszystkieViewBase : UserControl

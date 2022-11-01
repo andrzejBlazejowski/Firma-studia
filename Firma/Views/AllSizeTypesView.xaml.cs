@@ -16,13 +16,14 @@ using System.Windows.Shapes;
 namespace Firma.Views
 {
     /// <summary>
-    /// Interaction logic for WszystkieTowaryView.xaml
+    /// Interaction logic for AllBrandsView.xaml
     /// </summary>
-    public partial class WszystkieTowaryView : WszystkieViewBase
+    public partial class AllSizeTypesView : AllViewBase
     {
-        public WszystkieTowaryView()
+        public AllSizeTypesView()
         {
             InitializeComponent();
         }
     }
 }
+

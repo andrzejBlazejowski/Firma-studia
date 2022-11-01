@@ -66,9 +66,27 @@ namespace Firma.ViewModels
             return new List<CommandViewModel>
             {
                 new CommandViewModel("Towary",new BaseCommand(showAllTowar)), //to tworzy pierwszy przycisk o nazwie Towary, który pokaże zakładkę wszystkie towary
-                new CommandViewModel("Towar",new BaseCommand(()=>createView(new NowyTowarViewModel()))),
+                new CommandViewModel("Producenci",new BaseCommand(showAllBrands)),
+                new CommandViewModel("Kategorie Towarów",new BaseCommand(showAllComodityCategories)),
+                new CommandViewModel("kontrachenci",new BaseCommand(showAllContractors)), 
+                new CommandViewModel("typy kontrachentów",new BaseCommand(showAllContractorTypes)),
+                new CommandViewModel("waluty",new BaseCommand(showAllCurencies)),
+                new CommandViewModel("dostawy",new BaseCommand(showAllDeliveries)),
+                new CommandViewModel("pozycje dostawy",new BaseCommand(showAllDeliveryItems)),
+                new CommandViewModel("statusy dostawy",new BaseCommand(showAllDeliveryStatuses)),
+                new CommandViewModel("pracownicy",new BaseCommand(showAllEmployees)),
+                new CommandViewModel("typy pracowników",new BaseCommand(showAllEmployeeTypes)),
+                new CommandViewModel("faktury",new BaseCommand(showAllInvoices)),
+                new CommandViewModel("pozycje faktury",new BaseCommand(showAllInvoiceItems)),
+                new CommandViewModel("metody płatności",new BaseCommand(showAllPaymentMethods)),
+                new CommandViewModel("dostępne rozmiary",new BaseCommand(showAllSizeTypes)),
+                new CommandViewModel("miejsca w magazynach",new BaseCommand(showAllStorages)),
+                new CommandViewModel("magazyny",new BaseCommand(showAllWarehouses)),
+
+
+                /*new CommandViewModel("Towar",new BaseCommand(()=>createView(new NowyTowarViewModel()))),
                 new CommandViewModel("Katura",new BaseCommand(()=>createView(new NowaFakturaViewModel()))),
-                new CommandViewModel("Faktury",new BaseCommand(showAllFaktury)),
+                new CommandViewModel("Faktury",new BaseCommand(showAllFaktury)),*/
             };
         }
         #endregion
@@ -135,18 +153,261 @@ namespace Firma.ViewModels
         private void showAllTowar()
         {
             //sz....
-            WszystkieTowaryViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is WszystkieTowaryViewModel) as WszystkieTowaryViewModel;
+            AllComoditiesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllComoditiesViewModel) as AllComoditiesViewModel;
             //jezeli ....
             if(workspace == null)
             {
                 //tworzymy nowa zakladke Wszystkie towary
-                workspace=new WszystkieTowaryViewModel();
+                workspace=new AllComoditiesViewModel();
                 //i dodajemy ja do kolekcji zakladek
                 this.Workspaces.Add(workspace);
             }
             //aktywujemy zakladke
             this.setActiveWorkspace(workspace);
         }
+        private void showAllBrands()
+        {
+            //sz....
+            AllBrandsViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllBrandsViewModel) as AllBrandsViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllBrandsViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllContractors()
+        {
+            //sz....
+            AllContractorsViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllContractorsViewModel) as AllContractorsViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllContractorsViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllDeliveryItems()
+        {
+            //sz....
+            AllDeliveryItemsViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllDeliveryItemsViewModel) as AllDeliveryItemsViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllDeliveryItemsViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllDeliveryStatuses()
+        {
+            //sz....
+            AllDeliveryStatusesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllDeliveryStatusesViewModel) as AllDeliveryStatusesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllDeliveryStatusesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllContractorTypes()
+        {
+            //sz....
+            AllContractorTypesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllContractorTypesViewModel) as AllContractorTypesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllContractorTypesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllCurencies()
+        {
+            //sz....
+            AllCurenciesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllCurenciesViewModel) as AllCurenciesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllCurenciesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllDeliveries()
+        {
+            //sz....
+            AllDeliveryViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllDeliveryViewModel) as AllDeliveryViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllDeliveryViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllComodityCategories()
+        {
+            //sz....
+            AllComodityCategoriesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllComodityCategoriesViewModel) as AllComodityCategoriesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllComodityCategoriesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllEmployees()
+        {
+            //sz....
+            AllEmplyeesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllEmplyeesViewModel) as AllEmplyeesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllEmplyeesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllEmployeeTypes()
+        {
+            //sz....
+            AllEmplyeeTypesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllEmplyeeTypesViewModel) as AllEmplyeeTypesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllEmplyeeTypesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllInvoices()
+        {
+            //sz....
+            AllInvoicesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllInvoicesViewModel) as AllInvoicesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllInvoicesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllInvoiceItems()
+        {
+            //sz....
+            AllInvoiceItemsViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllInvoiceItemsViewModel) as AllInvoiceItemsViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllInvoiceItemsViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllPaymentMethods()
+        {
+            //sz....
+            AllPaymentMethodsViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllPaymentMethodsViewModel) as AllPaymentMethodsViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllPaymentMethodsViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllSizeTypes()
+        {
+            //sz....
+            AllSizeTypesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllSizeTypesViewModel) as AllSizeTypesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllSizeTypesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllStorages()
+        {
+            //sz....
+            AllStoragesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllStoragesViewModel) as AllStoragesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllStoragesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllWarehouses()
+        {
+            //sz....
+            AllWarehousesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllWarehousesViewModel) as AllWarehousesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllWarehousesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        
+
+
         private void setActiveWorkspace(WorkspaceViewModel workspace)
         {
             Debug.Assert(this.Workspaces.Contains(workspace));
