@@ -80,7 +80,7 @@ namespace Firma.ViewModels
                 new CommandViewModel("pozycje faktury",new BaseCommand(showAllInvoiceItems)),
                 new CommandViewModel("metody płatności",new BaseCommand(showAllPaymentMethods)),
                 new CommandViewModel("dostępne rozmiary",new BaseCommand(showAllSizeTypes)),
-                
+                new CommandViewModel("miejsca w magazynach",new BaseCommand(showAllStorages)),
 
 
                 new CommandViewModel("Towar",new BaseCommand(()=>createView(new NowyTowarViewModel()))),
@@ -368,6 +368,21 @@ namespace Firma.ViewModels
             {
                 //tworzymy nowa zakladke Wszystkie towary
                 workspace = new AllSizeTypesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllStorages()
+        {
+            //sz....
+            AllStoragesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllStoragesViewModel) as AllStoragesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllStoragesViewModel();
                 //i dodajemy ja do kolekcji zakladek
                 this.Workspaces.Add(workspace);
             }

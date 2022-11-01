@@ -65,6 +65,10 @@
     <DataTemplate DataType="{x:Type vm:AllSizeTypesViewModel}">
         <vw:AllSizeTypesView/>
     </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:AllStoragesViewModel}">
+        <vw:AllStoragesView/>
+    </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:NowyTowarViewModel}">
         <vw:NowyTowarView/>
