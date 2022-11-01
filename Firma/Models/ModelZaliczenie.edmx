@@ -208,7 +208,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="varbinary" MaxLength="50" Nullable="false" />
+			<Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="max_height" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="max_width" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="is_active" Type="bit" Nullable="false" />
@@ -846,7 +846,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+	      <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="max_height" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="max_width" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="is_active" Type="Boolean" Nullable="false" />

@@ -4290,11 +4290,11 @@ namespace Firma.Models
         private global::System.String _description;
         partial void OndescriptionChanging(global::System.String value);
         partial void OndescriptionChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Boolean is_active
         {
@@ -4314,7 +4314,7 @@ namespace Firma.Models
         private global::System.Boolean _is_active;
         partial void Onis_activeChanging(global::System.Boolean value);
         partial void Onis_activeChanged();
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -5406,7 +5406,7 @@ namespace Firma.Models
         /// <param name="max_width">Initial value of the max_width property.</param>
         /// <param name="is_active">Initial value of the is_active property.</param>
         /// <param name="create_date">Initial value of the create_date property.</param>
-        public static size_type Createsize_type(global::System.Int32 id, global::System.Byte[] name, global::System.Decimal max_height, global::System.Decimal max_width, global::System.Boolean is_active, global::System.DateTime create_date)
+        public static size_type Createsize_type(global::System.Int32 id, global::System.String name, global::System.Decimal max_height, global::System.Decimal max_width, global::System.Boolean is_active, global::System.DateTime create_date)
         {
             size_type size_type = new size_type();
             size_type.id = id;
@@ -5454,11 +5454,11 @@ namespace Firma.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Byte[] name
+        public global::System.String name
         {
             get
             {
-                return StructuralObject.GetValidValue(_name);
+                return _name;
             }
             set
             {
@@ -5469,8 +5469,8 @@ namespace Firma.Models
                 OnnameChanged();
             }
         }
-        private global::System.Byte[] _name;
-        partial void OnnameChanging(global::System.Byte[] value);
+        private global::System.String _name;
+        partial void OnnameChanging(global::System.String value);
         partial void OnnameChanged();
     
         /// <summary>

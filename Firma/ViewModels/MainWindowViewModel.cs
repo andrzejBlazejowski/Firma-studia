@@ -78,6 +78,8 @@ namespace Firma.ViewModels
                 new CommandViewModel("typy pracowników",new BaseCommand(showAllEmployeeTypes)),
                 new CommandViewModel("faktury",new BaseCommand(showAllInvoices)),
                 new CommandViewModel("pozycje faktury",new BaseCommand(showAllInvoiceItems)),
+                new CommandViewModel("metody płatności",new BaseCommand(showAllPaymentMethods)),
+                new CommandViewModel("dostępne rozmiary",new BaseCommand(showAllSizeTypes)),
                 
 
 
@@ -342,6 +344,38 @@ namespace Firma.ViewModels
             //aktywujemy zakladke
             this.setActiveWorkspace(workspace);
         }
+        private void showAllPaymentMethods()
+        {
+            //sz....
+            AllPaymentMethodsViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllPaymentMethodsViewModel) as AllPaymentMethodsViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllPaymentMethodsViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+        private void showAllSizeTypes()
+        {
+            //sz....
+            AllSizeTypesViewModel workspace = this.Workspaces.FirstOrDefault(vm => vm is AllSizeTypesViewModel) as AllSizeTypesViewModel;
+            //jezeli ....
+            if (workspace == null)
+            {
+                //tworzymy nowa zakladke Wszystkie towary
+                workspace = new AllSizeTypesViewModel();
+                //i dodajemy ja do kolekcji zakladek
+                this.Workspaces.Add(workspace);
+            }
+            //aktywujemy zakladke
+            this.setActiveWorkspace(workspace);
+        }
+
+
         private void setActiveWorkspace(WorkspaceViewModel workspace)
         {
             Debug.Assert(this.Workspaces.Contains(workspace));
